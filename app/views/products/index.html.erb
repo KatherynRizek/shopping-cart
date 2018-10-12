@@ -1,0 +1,22 @@
+<h1>All Products</h1>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Current Price</th>
+    <th>Quantity in Stock</th>
+    <th></th>
+  </tr>
+
+  <%= @product.each do |product| %>
+    <tr>
+      <td><%= product.product_name %></td>
+      <td><%= number_to_currency(product.price) %></td>
+      <td><%= product.quantity %></td>
+      <td><%= link_to 'Show', product_path(product) %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+    
