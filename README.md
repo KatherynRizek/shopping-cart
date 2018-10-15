@@ -1,25 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Use Docker to get this app started:
 
-Things you may want to cover:
+* Generate the Railse skeleton app using docker-compose run:
 
-* Ruby version
+  docker-compose run web rails new . --force --database=postgresql
+ 
+* If using a linux based system, change the ownership of the files:
 
-* System dependencies
+  sudo chown -R $USER:$USER .
+  
+* Build the image again since there is a new Gemfile:
 
-* Configuration
+  docker-compose build
+  
+* Start the database up:
 
-* Database creation
+  docker-compose up
+  
+* Create the database:
 
-* Database initialization
+  docker-compose run web rake db:create
+  
+* Check if everything is running correctly by going to http://localhost:3000
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 # shopping-cart
