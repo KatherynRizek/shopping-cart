@@ -1,5 +1,3 @@
 class Product < ApplicationRecord
-    validates :product_name, presence: true
-    validates :price, presence: true
-    validates :quantity, presence: true
+    has_many :order_items   
 end

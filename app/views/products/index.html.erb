@@ -1,22 +1,12 @@
-<h1>All Products</h1>
 
-<table>
-  <tr>
-    <th>Product</th>
-    <th>Current Price</th>
-    <th>Quantity in Stock</th>
-    <th></th>
-  </tr>
-
-  <%= @product.each do |product| %>
-    <tr>
-      <td><%= product.product_name %></td>
-      <td><%= number_to_currency(product.price) %></td>
-      <td><%= product.quantity %></td>
-      <td><%= link_to 'Show', product_path(product) %></td>
-    </tr>
-  <% end %>
-</table>
-
-
-    
+<h2>The Office Supply Store</h2>
+<% @products.each do |product| %>
+  <p><font size="+1"><%= product.name %> | <%= number_to_currency(product.price) %></font><br>
+  <%= image_tag(product.image, size: "175x175", alt: product.name)%>
+  <%= form_for @order_item do |f| %>
+    <%= f.hidden_field :product_id, value: product.id %>
+    <%= f.number_field :quantity %>
+    <%= f.submit "Add to cart" %>
+  <% end %></p>
+<% end %>
+<%= link_to '<button type="button">View Cart</button>'.html_safe, cart_path %>
